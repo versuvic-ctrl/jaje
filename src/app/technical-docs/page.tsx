@@ -410,7 +410,7 @@ export default function TechnicalDocsPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Download className="h-4 w-4 text-gray-500" />
-                          <span>{doc.downloads.toLocaleString()} 다운로드</span>
+                          <span>{doc.downloads?.toLocaleString() || '0'} 다운로드</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar className="h-4 w-4 text-gray-500" />
@@ -485,7 +485,7 @@ export default function TechnicalDocsPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Download className="h-4 w-4 text-gray-500" />
-                          <span>{doc.downloads.toLocaleString()} 다운로드</span>
+                          <span>{doc.downloads?.toLocaleString() || '0'} 다운로드</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar className="h-4 w-4 text-gray-500" />
@@ -564,7 +564,7 @@ export default function TechnicalDocsPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Eye className="h-4 w-4 text-gray-500" />
-                          <span>{video.views.toLocaleString()} 조회</span>
+                          <span>{video.views?.toLocaleString() || '0'} 조회</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <User className="h-4 w-4 text-gray-500" />
@@ -635,7 +635,7 @@ export default function TechnicalDocsPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Download className="h-4 w-4 text-gray-500" />
-                          <span>{tool.downloads.toLocaleString()} 다운로드</span>
+                          <span>{tool.downloads?.toLocaleString() || '0'} 다운로드</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar className="h-4 w-4 text-gray-500" />

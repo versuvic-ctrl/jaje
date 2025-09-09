@@ -135,11 +135,11 @@ export default function ASMEMaterialsPage() {
     return asmeStandards[activeTab] || [];
   };
 
-  const filteredData = getCurrentData().filter(item => {
-    const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredData = (getCurrentData() || []).filter(item => {
+    const matchesSearch = item?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         item?.description?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesGrade = selectedGrade === '전체' || 
-                        item.grades.some(grade => grade.includes(selectedGrade));
+                        (item?.grades || []).some(grade => grade.includes(selectedGrade));
     return matchesSearch && matchesGrade;
   });
 
@@ -250,7 +250,7 @@ export default function ASMEMaterialsPage() {
           {/* 파이프 탭 */}
           <TabsContent value="pipes" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredData.map((standard, index) => (
+              {(filteredData || []).map((standard, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex justify-between items-start">
@@ -269,7 +269,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">등급</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.grades.map((grade, idx) => (
+                          {(standard?.grades || []).map((grade, idx) => (
                             <Badge key={idx} variant="secondary">{grade}</Badge>
                           ))}
                         </div>
@@ -286,7 +286,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">크기 범위</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.sizes.map((size, idx) => (
+                          {(standard?.sizes || []).map((size, idx) => (
                             <Badge key={idx} variant="outline">{size}</Badge>
                           ))}
                         </div>
@@ -297,7 +297,7 @@ export default function ASMEMaterialsPage() {
                         <div>
                           <h4 className="font-semibold text-sm text-gray-700 mb-2">스케줄</h4>
                           <div className="flex flex-wrap gap-2">
-                            {standard.schedules.map((schedule, idx) => (
+                            {(standard?.schedules || []).map((schedule, idx) => (
                               <Badge key={idx} variant="outline">{schedule}</Badge>
                             ))}
                           </div>
@@ -308,7 +308,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">주요 적용 분야</h4>
                         <div className="text-sm text-gray-600">
-                          {standard.applications.join(', ')}
+                          {(standard?.applications || []).join(', ')}
                         </div>
                       </div>
 
@@ -331,7 +331,7 @@ export default function ASMEMaterialsPage() {
           {/* 피팅 탭 */}
           <TabsContent value="fittings" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredData.map((standard, index) => (
+              {(filteredData || []).map((standard, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex justify-between items-start">
@@ -350,7 +350,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">등급</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.grades.map((grade, idx) => (
+                          {(standard?.grades || []).map((grade, idx) => (
                             <Badge key={idx} variant="secondary">{grade}</Badge>
                           ))}
                         </div>
@@ -367,7 +367,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">피팅 타입</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.types.map((type, idx) => (
+                          {(standard?.types || []).map((type, idx) => (
                             <Badge key={idx} variant="outline">{type}</Badge>
                           ))}
                         </div>
@@ -377,7 +377,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">주요 적용 분야</h4>
                         <div className="text-sm text-gray-600">
-                          {standard.applications.join(', ')}
+                          {(standard?.applications || []).join(', ')}
                         </div>
                       </div>
 
@@ -400,7 +400,7 @@ export default function ASMEMaterialsPage() {
           {/* 플랜지 탭 */}
           <TabsContent value="flanges" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredData.map((standard, index) => (
+              {(filteredData || []).map((standard, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex justify-between items-start">
@@ -419,7 +419,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">등급</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.grades.map((grade, idx) => (
+                          {(standard?.grades || []).map((grade, idx) => (
                             <Badge key={idx} variant="secondary">{grade}</Badge>
                           ))}
                         </div>
@@ -436,7 +436,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">플랜지 타입</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.types.map((type, idx) => (
+                          {(standard?.types || []).map((type, idx) => (
                             <Badge key={idx} variant="outline">{type}</Badge>
                           ))}
                         </div>
@@ -469,7 +469,7 @@ export default function ASMEMaterialsPage() {
           {/* 밸브 탭 */}
           <TabsContent value="valves" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {filteredData.map((standard, index) => (
+              {(filteredData || []).map((standard, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex justify-between items-start">
@@ -488,7 +488,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">등급</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.grades.map((grade, idx) => (
+                          {(standard?.grades || []).map((grade, idx) => (
                             <Badge key={idx} variant="secondary">{grade}</Badge>
                           ))}
                         </div>
@@ -505,7 +505,7 @@ export default function ASMEMaterialsPage() {
                       <div>
                         <h4 className="font-semibold text-sm text-gray-700 mb-2">밸브 타입</h4>
                         <div className="flex flex-wrap gap-2">
-                          {standard.types.map((type, idx) => (
+                          {(standard?.types || []).map((type, idx) => (
                             <Badge key={idx} variant="outline">{type}</Badge>
                           ))}
                         </div>

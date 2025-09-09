@@ -2248,14 +2248,14 @@ const ISOPipingEditor: React.FC = () => {
                 onChange={(e) => setCurrentPipeSize(e.target.value)}
                 className="w-full px-2 py-1 text-sm border border-gray-300 rounded"
               >
-                <option value='1"'>1"</option>
-                <option value='2"'>2"</option>
-                <option value='3"'>3"</option>
-                <option value='4"'>4"</option>
-                <option value='6"'>6"</option>
-                <option value='8"'>8"</option>
-                <option value='10"'>10"</option>
-                <option value='12"'>12"</option>
+                <option value='1"'>1&quot;</option>
+                <option value='2"'>2&quot;</option>
+                <option value='3"'>3&quot;</option>
+                <option value='4"'>4&quot;</option>
+                <option value='6"'>6&quot;</option>
+                <option value='8"'>8&quot;</option>
+                <option value='10"'>10&quot;</option>
+                <option value='12"'>12&quot;</option>
               </select>
             </div>
             <div>
